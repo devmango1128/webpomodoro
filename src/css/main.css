@@ -1,0 +1,180 @@
+#header_icon {
+    max-width: 380px;
+    height: 20px;
+    line-height: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+#header_icon img {
+    width:24px;
+    height:24px;
+}
+
+#timer-label {
+    padding: 3px 0px 5px 0px;
+    font-size: 12px;
+    font-weight: 700;
+}
+/* timer circle */
+#timer-container {
+    position: relative;
+    display: inline-block;
+    width: 264px;
+    height: 264px;
+}
+
+#timer-wrapper, #circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#circle {
+    z-index: -1;
+}
+
+#timer {
+    width: 200px;
+    height: 200px;
+    padding: 30px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+}
+
+#time{
+    margin: 0;
+    font-size: 4.5em;
+    line-height: 200px;
+}
+
+#daily-cnt-circle {
+    display: inline-block;
+    font-size: 10px;
+    margin: 0px;
+}
+
+#control .play-pause {
+    font-size: 30px;
+    font-family: FontAwesome;
+    line-height: 40px;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.reset {
+    margin-bottom: 40px;
+    font-weight: 600;
+    font-size: 10px;
+}
+
+/* break and session length controls */
+.length {
+    display: inline-block;
+    line-height: 48px;
+    margin-top: 0;
+    font-size: 12px;
+    max-width:120px;
+    min-width:116px;
+}
+
+.length .label {
+    margin: 0px;
+    text-transform: uppercase;
+    line-height: 1;
+    font-size: 0.9em;
+}
+
+.length .number {
+    display: inline-block;
+    font-size: 1.6em;
+    min-width: 30px;
+}
+
+.length button {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    overflow: hidden;
+    outline: none;
+    width: 40px;
+    height: 48px;
+    font-size: 1.6em;
+    color: #fff;
+}
+
+.length button:hover,
+.length button:active {
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+/*colors*/
+.colors {
+    margin-bottom: 10px;
+}
+.colors div {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+    border:1px solid #fff;
+    cursor: pointer;
+    overflow: hidden;
+    text-align:center;
+}
+
+.colors div img {
+    display: none;
+    height:40px;
+    width:40px;
+    margin-top:3px;
+}
+
+.colors div#color1 {
+    background-color: #EF5350;
+}
+.colors div#color2 {
+    background-color: #fa7d2f;
+}
+.colors div#color3 {
+    background-color: #3acc91;
+}
+.colors div#color4 {
+    background-color: #2f6ffa;
+}
+.colors div#color5 {
+    background-color: #343333;
+}
+.colors div#color6 {
+    background-color: #1c1b1b;
+}
+
+.colors div#color1 img{
+    display: inline-block;
+}
+
+audio {
+    display: none;
+}
+
+#email img {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#email span {
+    font-size: 11px;
+    display: inline-block;
+    vertical-align: middle;
+    color: #ffffff;
+}
