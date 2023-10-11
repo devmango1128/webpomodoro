@@ -15,8 +15,8 @@
 <body>
 <div id="container">
     <div id="header_icon">
-        <img id="reset" class="reset" src="src/images/refresh.png}"/>
-        <img id="audio" class="audio" src="src/images/audio_on.png}" />
+        <img id="reset" class="reset" src="src/images/refresh.png"/>
+        <img id="audio" class="audio" src="src/images/audio_on.png" />
     </div>
     <div class="timer-label" id="timer-label">
         POMODORO
@@ -34,8 +34,8 @@
         <canvas id="circle" width="264" height="264"></canvas>
     </div>
     <div id="control">
-        <img id="play" class="play-pause" th:src="@{/images/play.png}" alt="플레이 이미지">
-        <img id="pause" class="play-pause hidden" th:src="@{/images/pause.png}" alt="정지 이미지">
+        <img id="play" class="play-pause" src="src/images/play.png" alt="플레이 이미지">
+        <img id="pause" class="play-pause hidden" src="src/images/pause.png" alt="정지 이미지">
     </div>
     <div class="length sess-len-box">
         <p class="label">POMODORO</p>
@@ -89,7 +89,7 @@
         <button id="daily-incr">+</button>
     </div>
     <audio id="ding" controls>
-        <source th:src="src/audio/ding.mp3" type="audio/mpeg">
+        <source src="src/audio/ding.mp3" type="audio/mpeg">
     </audio>
     <audio id="endDing" controls>
         <source src="src/audio/attention.mp3" type="audio/mpeg">
