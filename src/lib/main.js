@@ -1,8 +1,4 @@
-"use strict";
-
-$(function () {
-  "use strict";
-
+window.onload = function(){
   var timer;
   var sessionLen = $('#session-len').html();
   var breakLen = $('#break-len').html();
