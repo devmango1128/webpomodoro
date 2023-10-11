@@ -205,4 +205,4 @@ window.onload = function(){
     color = $(this).data('color');
     $('body').css('background-color', color);
   });
-});
+}
