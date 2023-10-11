@@ -195,7 +195,7 @@ window.onload = function(){
   // toggle audio
   $('#audio').click(function () {
     volumeOn = volumeOn ? false : true;
-    volumeOn ? $('#audio').attr('src', '/images/audio_on.png') : $('#audio').attr('src', '/images/audio_off.png');
+    volumeOn ? $('#audio').attr('src', 'src/images/audio_on.png') : $('#audio').attr('src', 'src/images/audio_off.png');
   });
 
   // color change
