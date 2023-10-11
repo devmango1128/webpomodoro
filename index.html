@@ -1,10 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta charset="utf-8">
+    <title>Pomodoro</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script th:src="@{/lib/main.js}" type="text/javascript"></script>
+    <link th:href="@{/css/common.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/main.css}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-    Hi!test
+<div id="container">
+    <div id="header_icon">
+        <img id="reset" class="reset" th:src="@{/images/refresh.png}"/>
+        <img id="audio" class="audio" th:src="@{/images/audio_on.png}" />
+    </div>
+    <div class="timer-label" id="timer-label">
+        POMODORO
+    </div>
+    <span class="daily-cnt"></span>
+    <div id="timer-container">
+        <div id="timer-wrapper">
+            <div id="timer">
+                <p id="time">
+                    <span id="minutes">25</span>:<span id="seconds">00</span>
+                </p>
+                <span id="daily-cnt-circle"></span>
+            </div>
+        </div>
+        <canvas id="circle" width="264" height="264"></canvas>
+    </div>
+    <div id="control">
+        <img id="play" class="play-pause" th:src="@{/images/play.png}" alt="플레이 이미지">
+        <img id="pause" class="play-pause hidden" th:src="@{/images/pause.png}" alt="정지 이미지">
+    </div>
+    <div class="length sess-len-box">
+        <p class="label">POMODORO</p>
+        <button id="session-decr">&minus;</button>
+        <span id="session-len" class="number">25</span>
+        <button id="session-incr">+</button>
+    </div>
+    <div class="length br-len-box">
+        <p class="label">BREAK</p>
+        <button id="break-decr">&minus;</button>
+        <span id="break-len" class="number">5</span>
+        <button id="break-incr">+</button>
+    </div>
+    <div class="length l-br-len-box">
+        <p class="label">LONG BREAK</p>
+        <button id="long-break-decr">&minus;</button>
+        <span id="long-break-len" class="number">3</span>
+        <button id="long-break-incr">+</button>
+    </div>
+    <div class="colors">
+        <div class="color" id="color1" data-color="#EF5350">
+            <img th:src="@{/images/check.png}" alt="체크 이미지">
+        </div>
+        <div class="color" id="color2" data-color="#fa7d2f">
+            <img th:src="@{/images/check.png}" alt="체크 이미지">
+        </div>
+        <div class="color" id="color3" data-color="#3acc91">
+            <img th:src="@{/images/check.png}" alt="체크 이미지">
+        </div>
+        <div class="color" id="color4" data-color="#2f6ffa">
+            <img th:src="@{/images/check.png}" alt="체크 이미지">
+        </div>
+        <div class="color" id="color5" data-color="#343333">
+            <img th:src="@{/images/check.png}" alt="체크 이미지">
+        </div>
+        <div class="color" id="color6" data-color="#1c1b1b">
+            <img th:src="@{/images/check.png}" alt="체크 이미지">
+        </div>
+        <input type="hidden" id="color" value="#EF5350" />
+    </div>
+    <div class="length br-len-box">
+        <p class="label">UNTIL LONG BREAK</p>
+        <button id="long-cnt-break-decr">&minus;</button>
+        <span id="long-cnt-break-len" class="number">5</span>
+        <button id="long-cnt-break-incr">+</button>
+    </div>
+    <div class="length l-br-len-box">
+        <p class="label">DAILY GOAL</p>
+        <button id="daily-decr">&minus;</button>
+        <span id="daily-len" class="number">5</span>
+        <button id="daily-incr">+</button>
+    </div>
+    <audio id="ding" controls>
+        <source th:src="@{/audio/ding.mp3}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="endDing" controls>
+        <source th:src="@{/audio/attention.mp3}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <!-- <div id="email">
+         <img th:src="@{/images/email.png}" alt="이메일 이미지">
+         <span id="sendEmail">devmango1128@gmail.com</span>
+     </div>-->
+</div>
+<ins class="kakao_ad_area" style="display:none;"
+     data-ad-unit = "DAN-GQZpSv9EFKFgmW9E"
+     data-ad-width = "320"
+     data-ad-height = "100"></ins>
 </body>
 </html>
