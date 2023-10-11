@@ -13,11 +13,11 @@ window.onload = function(){
   var color = '#EF5350';
   var dailyCntCircle = '';
   var sendEmailBtn = document.querySelector('#sendEmail');
-  sendEmailBtn.addEventListener('click', function () {
+  /*sendEmailBtn.addEventListener('click', function () {
     var email = 'devmango1128@gmail.com';
     var subject = '[pomodoro 사이트 문의]';
     window.location = "mailto:".concat(email, "?subject=").concat(subject);
-  });
+  });*/
   var circle = document.querySelector('#circle');
   var ctx = circle.getContext('2d');
   ctx.strokeStyle = '#FFF';
