@@ -12,7 +12,7 @@ window.onload = function(){
   var volumeOn = true;
   var color = '#EF5350';
   var dailyCntCircle = '';
-  var sendEmailBtn = document.querySelector('#sendEmail');
+  //var sendEmailBtn = document.querySelector('#sendEmail');
   /*sendEmailBtn.addEventListener('click', function () {
     var email = 'devmango1128@gmail.com';
     var subject = '[pomodoro 사이트 문의]';
