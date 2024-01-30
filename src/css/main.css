@@ -78,7 +78,7 @@
     margin-top: 0;
     font-size: 12px;
     max-width:120px;
-    min-width:116px;
+    min-width:111px;
 }
 
 .length .label {
@@ -100,7 +100,7 @@
     border: none;
     overflow: hidden;
     outline: none;
-    width: 40px;
+    width: 35px;
     height: 48px;
     font-size: 1.6em;
     color: #fff;
