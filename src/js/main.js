@@ -85,38 +85,38 @@ $(function () {
         //break
         if (sessionShowing) {
 
-            //long-break인지 체크
-            if(untilLongBreakCnt === Number($('#long-cnt-break-len').html())) {
-
-                finishCnt++;
-
-                //daily 끝인지 확인
-                if(finishCnt === Number($('#daily-len').html())) {
-
-                    $('#timer-label').html('DAILY GOAL!');
-                    $("#endDing")[0].play();
-                    $("#timer-label").html("POMODORO");
-                    $('body').css('background-color', color);
-                    $('#reset').trigger('click');
-
-                    return;
-                }
-
-                $('#timer-label').html('LONG BREAK');
-                sessionShowing = false;
-                $('#minutes').html(longBreakLen);
-                $('body').css('background-color', '#696969');
-                //초기화
-                untilLongBreakCnt = 0;
-
-            } else {
+            // //long-break인지 체크
+            // if(untilLongBreakCnt === Number($('#long-cnt-break-len').html())) {
+            //
+            //     finishCnt++;
+            //
+            //     //daily 끝인지 확인
+            //     if(finishCnt === Number($('#daily-len').html())) {
+            //
+            //         $('#timer-label').html('DAILY GOAL!');
+            //         $("#endDing")[0].play();
+            //         $("#timer-label").html("POMODORO");
+            //         $('body').css('background-color', color);
+            //         $('#reset').trigger('click');
+            //
+            //         return;
+            //     }
+            //
+            //     $('#timer-label').html('LONG BREAK');
+            //     sessionShowing = false;
+            //     $('#minutes').html(longBreakLen);
+            //     $('body').css('background-color', '#696969');
+            //     //초기화
+            //     untilLongBreakCnt = 0;
+            //
+            // } else {
 
                 $('#timer-label').html('BREAK');
                 sessionShowing = false;
                 $('#minutes').html(breakLen);
                 $('body').css('background-color', '#808080');
 
-            }
+            // }
 
         //pomodoro
         } else {

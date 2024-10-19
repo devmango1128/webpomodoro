@@ -38,7 +38,7 @@
         </div>
         <canvas id="circle" width="264" height="264"></canvas>
     </div>
-    <div id="control">
+    <div id="control" class="control">
         <img id="play" class="play-pause" src="src/images/play.png" alt="플레이 이미지">
         <img id="pause" class="play-pause hidden" src="src/images/pause.png" alt="정지 이미지">
     </div>
@@ -54,12 +54,12 @@
         <span id="break-len" class="number">5</span>
         <button id="break-incr">+</button>
     </div>
-    <div class="length l-br-len-box">
-        <p class="label">LONG BREAK</p>
-        <button id="long-break-decr">&minus;</button>
-        <span id="long-break-len" class="number">3</span>
-        <button id="long-break-incr">+</button>
-    </div>
+<!--    <div class="length l-br-len-box">-->
+<!--        <p class="label">LONG BREAK</p>-->
+<!--        <button id="long-break-decr">&minus;</button>-->
+<!--        <span id="long-break-len" class="number">3</span>-->
+<!--        <button id="long-break-incr">+</button>-->
+<!--    </div>-->
     <div class="colors">
         <div class="color" id="color1" data-color="#EF5350">
             <img src="src/images/check.png" alt="체크 이미지">
@@ -81,18 +81,18 @@
         </div>
         <input type="hidden" id="color" value="#EF5350" />
     </div>
-    <div class="length br-len-box">
-        <p class="label">UNTIL LONG BREAK</p>
-        <button id="long-cnt-break-decr">&minus;</button>
-        <span id="long-cnt-break-len" class="number">5</span>
-        <button id="long-cnt-break-incr">+</button>
-    </div>
-    <div class="length l-br-len-box">
-        <p class="label">DAILY GOAL</p>
-        <button id="daily-decr">&minus;</button>
-        <span id="daily-len" class="number">5</span>
-        <button id="daily-incr">+</button>
-    </div>
+<!--    <div class="length br-len-box">-->
+<!--        <p class="label">UNTIL LONG BREAK</p>-->
+<!--        <button id="long-cnt-break-decr">&minus;</button>-->
+<!--        <span id="long-cnt-break-len" class="number">5</span>-->
+<!--        <button id="long-cnt-break-incr">+</button>-->
+<!--    </div>-->
+<!--    <div class="length l-br-len-box">-->
+<!--        <p class="label">DAILY GOAL</p>-->
+<!--        <button id="daily-decr">&minus;</button>-->
+<!--        <span id="daily-len" class="number">5</span>-->
+<!--        <button id="daily-incr">+</button>-->
+<!--    </div>-->
     <audio id="ding" controls>
         <source src="src/audio/ding.mp3" type="audio/mpeg">
     </audio>

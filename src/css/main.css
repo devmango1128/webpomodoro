@@ -11,8 +11,8 @@
 }
 
 #timer-label {
-    padding: 3px 0px 5px 0px;
-    font-size: 12px;
+    padding: 20px 0 20px 0;
+    font-size: 1.2rem;
     font-weight: 700;
 }
 /* timer circle */
@@ -45,19 +45,24 @@
 
 #time{
     margin: 0;
-    font-size: 4.5em;
+    font-size: 4.5rem;
     line-height: 200px;
 }
 
 #daily-cnt-circle {
     display: inline-block;
     font-size: 10px;
-    margin: 0px;
+    margin: 0;
+}
+
+#control {
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 #control .play-pause {
     font-size: 30px;
-    font-family: FontAwesome;
+    font-family: FontAwesome, serif;
     line-height: 40px;
     cursor: pointer;
     width: 50px;
@@ -76,22 +81,23 @@
     display: inline-block;
     line-height: 48px;
     margin-top: 0;
+    margin-bottom: 15px;
     font-size: 12px;
-    max-width:120px;
-    min-width:111px;
+    max-width:150px;
+    min-width:150px;
 }
 
 .length .label {
     margin: 0px;
     text-transform: uppercase;
     line-height: 1;
-    font-size: 0.9em;
+    font-size: 0.9rem;
 }
 
 .length .number {
     display: inline-block;
-    font-size: 1.6em;
-    min-width: 30px;
+    font-size: 1.6rem;
+    min-width: 70px;
 }
 
 .length button {
@@ -102,7 +108,7 @@
     outline: none;
     width: 35px;
     height: 48px;
-    font-size: 1.6em;
+    font-size: 1.6rem;
     color: #fff;
 }
 
@@ -165,14 +171,14 @@ audio {
     display: none;
 }
 
-#email img {
+#remail img {
     width: 10px;
     height: 10px;
     display: inline-block;
     vertical-align: middle;
 }
 
-#email span {
+#remail span {
     font-size: 11px;
     display: inline-block;
     vertical-align: middle;
