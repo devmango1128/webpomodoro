@@ -1,108 +1,199 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <meta http-equiv="Cache-Control" content="no-cache">
     <meta charset="utf-8">
     <title>Pomodoro</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="src/css/common.css" rel="stylesheet" />
     <link href="src/css/main.css" rel="stylesheet" />
 </head>
 <body>
-<!--
-<ins class="kakao_ad_area" style="display:none;"
-     data-ad-unit = "DAN-6jQtlSOYOKCzQlDD"
-     data-ad-width = "320"
-     data-ad-height = "50"></ins>
-<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>-->
 <div id="container">
-    <div id="header_icon">
-        <img id="reset" class="reset" src="src/images/refresh.png"/>
-        <img id="audio" class="audio" src="src/images/audio_on.png" />
+    <!-- 타이틀바 -->
+    <div id="titlebar">
+        <div id="titlebar-left">
+            <i id="reset" class="fa-solid fa-rotate-right reset"></i>
+            <span class="reset-label">reset</span>
+        </div>
+        <div id="titlebar-text"><svg class="tomato-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 64 64"><path d="M32 8c-2 0-3.5.5-4 1.5C24 7 20 6 18 7c-1.5.8-1 2.5 0 3.5C10 14 4 22 4 34c0 14 12 26 28 26s28-12 28-26c0-12-6-20-14-23.5 1-1 1.5-2.7 0-3.5-2-1-6 0-10 2.5-.5-1-2-1.5-4-1.5z" fill="#fff"/><path d="M28 9.5c-.5-3-1-6.5 1-8.5 2.5-2.5 5-.5 4 2s-3 5-5 6.5z" fill="#fff" opacity="0.7"/></svg> POMODORO</div>
+        <div id="titlebar-right"></div>
     </div>
-    <div class="timer-label" id="timer-label">
-        POMODORO
-    </div>
-    <span class="daily-cnt"></span>
-    <div id="timer-container">
-        <div id="timer-wrapper">
-            <div id="timer">
-                <p id="time">
-                    <span id="minutes">25</span>:<span id="seconds">00</span>
-                </p>
-                <span id="daily-cnt-circle"></span>
+
+    <!-- 타이머 페이지 -->
+    <div id="page-timer" class="page active">
+        <span class="daily-cnt"></span>
+        <div id="timer-container">
+            <div id="timer-wrapper">
+                <div id="timer">
+                    <p id="time">
+                        <span id="minutes">25</span>:<span id="seconds">00</span>
+                    </p>
+                    <span id="daily-cnt-circle"></span>
+                </div>
+            </div>
+            <canvas id="circle" width="264" height="264"></canvas>
+        </div>
+        <div class="length-wrapper">
+            <div class="length-group">
+                <p class="label">집중</p>
+                <div class="length sess-len-box">
+                    <button id="session-decr">&minus;</button>
+                    <span id="session-len" class="number">25</span>
+                    <button id="session-incr">+</button>
+                </div>
+            </div>
+            <div class="length-group">
+                <p class="label">휴식</p>
+                <div class="length br-len-box">
+                    <button id="break-decr">&minus;</button>
+                    <span id="break-len" class="number">5</span>
+                    <button id="break-incr">+</button>
+                </div>
             </div>
         </div>
-        <canvas id="circle" width="264" height="264"></canvas>
+        <p id="length-description" class="length-description"></p>
+        <div id="control" class="control">
+            <div class="play-pause-wrap">
+                <img id="play" class="play-pause" src="src/images/play.png" alt="플레이 이미지">
+                <span class="control-label">시작</span>
+            </div>
+            <div class="play-pause-wrap hidden">
+                <img id="pause" class="play-pause" src="src/images/pause.png" alt="정지 이미지">
+                <span class="control-label">정지</span>
+            </div>
+        </div>
     </div>
-    <div id="control" class="control">
-        <img id="play" class="play-pause" src="src/images/play.png" alt="플레이 이미지">
-        <img id="pause" class="play-pause hidden" src="src/images/pause.png" alt="정지 이미지">
+
+    <!-- 통계 페이지 -->
+    <div id="page-stats" class="page">
+        <div class="stats-container">
+            <div class="stats-section">
+                <h3 class="stats-title"><i class="fa-solid fa-calendar-day"></i> 오늘</h3>
+                <div class="stats-today-box">
+                    <p class="stats-today-line" id="today-focus-line"></p>
+                    <p class="stats-today-line" id="today-break-line"></p>
+                </div>
+            </div>
+            <div class="stats-section">
+                <h3 class="stats-title"><i class="fa-solid fa-chart-bar"></i> 최근 7일</h3>
+                <div id="weekly-stats" class="weekly-stats"></div>
+                <div class="weekly-chart-wrapper">
+                    <canvas id="weekly-chart" width="340" height="150"></canvas>
+                </div>
+                <div id="weekly-total-row" class="weekly-stats-row weekly-total-row"></div>
+            </div>
+        </div>
     </div>
-    <div class="length sess-len-box">
-        <p class="label">POMODORO</p>
-        <button id="session-decr">&minus;</button>
-        <span id="session-len" class="number">25</span>
-        <button id="session-incr">+</button>
+
+    <!-- 설정 페이지 -->
+    <div id="page-settings" class="page">
+        <div class="settings-container">
+            <div class="settings-section">
+                <h3 class="settings-label">소리</h3>
+                <div class="toggle-wrapper">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="sound-toggle" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="settings-section">
+                <h3 class="settings-label">테마</h3>
+                <div class="colors">
+                    <div class="color" id="color1" data-color="#EF5350">
+                        <img src="src/images/check.png" alt="체크 이미지">
+                    </div>
+                    <div class="color" id="color2" data-color="#fa7d2f">
+                        <img src="src/images/check.png" alt="체크 이미지">
+                    </div>
+                    <div class="color" id="color3" data-color="#f39c12">
+                        <img src="src/images/check.png" alt="체크 이미지">
+                    </div>
+                    <div class="color" id="color8" data-color="#16a085">
+                        <img src="src/images/check.png" alt="체크 이미지">
+                    </div>
+                    <div class="color" id="color4" data-color="#2f6ffa">
+                        <img src="src/images/check.png" alt="체크 이미지">
+                    </div>
+                    <div class="color" id="color7" data-color="#8e44ad">
+                        <img src="src/images/check.png" alt="체크 이미지">
+                    </div>
+                    <div class="color" id="color5" data-color="#343333">
+                        <img src="src/images/check.png" alt="체크 이미지">
+                    </div>
+                    <div class="color" id="color6" data-color="#1c1b1b">
+                        <img src="src/images/check.png" alt="체크 이미지">
+                    </div>
+                    <input type="hidden" id="color" value="#EF5350" />
+                </div>
+            </div>
+            <div class="settings-section settings-game-section">
+                <h3 class="settings-label"><i class="fa-solid fa-gamepad"></i> 집중력을 높이는 게임</h3>
+            </div>
+            <div class="game-list">
+                <a class="game-item" href="https://play.google.com/store/apps/details?id=com.devmango161128.memorypang" target="_blank">
+                    <i class="fa-solid fa-clone"></i>
+                    <div class="game-info">
+                        <span class="game-name">메모리팡</span>
+                        <span class="game-desc">기억력 카드 게임</span>
+                    </div>
+                </a>
+                <a class="game-item" href="https://play.google.com/store/apps/details?id=com.devmango161128.sudopang" target="_blank">
+                    <i class="fa-solid fa-table-cells"></i>
+                    <div class="game-info">
+                        <span class="game-name">스도팡</span>
+                        <span class="game-desc">두뇌 게임 스도쿠</span>
+                    </div>
+                </a>
+                <a class="game-item" href="https://play.google.com/store/apps/details?id=com.devmango161128.puzzlepang" target="_blank">
+                    <i class="fa-solid fa-puzzle-piece"></i>
+                    <div class="game-info">
+                        <span class="game-name">퍼즐팡</span>
+                        <span class="game-desc">성취감 업! 슬라이딩 퍼즐 게임</span>
+                    </div>
+                </a>
+            </div>
+            <div class="settings-section settings-game-section">
+                <h3 class="settings-label"><i class="fa-solid fa-calculator"></i> 단위 변환 쉽게 하기</h3>
+            </div>
+            <div class="game-list">
+                <a class="game-item" href="https://play.google.com/store/apps/details?id=com.devmango.unitconversion" target="_blank">
+                    <i class="fa-solid fa-ruler-combined"></i>
+                    <div class="game-info">
+                        <span class="game-name">단위팡</span>
+                        <span class="game-desc">All IN ONE 단위 계산기</span>
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
-    <div class="length br-len-box">
-        <p class="label">BREAK</p>
-        <button id="break-decr">&minus;</button>
-        <span id="break-len" class="number">5</span>
-        <button id="break-incr">+</button>
-    </div>
-<!--    <div class="length l-br-len-box">-->
-<!--        <p class="label">LONG BREAK</p>-->
-<!--        <button id="long-break-decr">&minus;</button>-->
-<!--        <span id="long-break-len" class="number">3</span>-->
-<!--        <button id="long-break-incr">+</button>-->
-<!--    </div>-->
-    <div class="colors">
-        <div class="color" id="color1" data-color="#EF5350">
-            <img src="src/images/check.png" alt="체크 이미지">
+
+    <!-- 하단 네비게이션 -->
+    <nav id="bottom-nav">
+        <div class="nav-item active" data-page="timer">
+            <i class="fa-solid fa-clock"></i>
+            <span>타이머</span>
         </div>
-        <div class="color" id="color2" data-color="#fa7d2f">
-            <img src="src/images/check.png" alt="체크 이미지">
+        <div class="nav-item" data-page="stats">
+            <i class="fa-solid fa-chart-simple"></i>
+            <span>통계</span>
         </div>
-        <div class="color" id="color3" data-color="#3acc91">
-            <img src="src/images/check.png" alt="체크 이미지">
+        <div class="nav-item" data-page="settings">
+            <i class="fa-solid fa-gear"></i>
+            <span>설정</span>
         </div>
-        <div class="color" id="color4" data-color="#2f6ffa">
-            <img src="src/images/check.png" alt="체크 이미지">
-        </div>
-        <div class="color" id="color5" data-color="#343333">
-            <img src="src/images/check.png" alt="체크 이미지">
-        </div>
-        <div class="color" id="color6" data-color="#1c1b1b">
-            <img src="src/images/check.png" alt="체크 이미지">
-        </div>
-        <input type="hidden" id="color" value="#EF5350" />
-    </div>
-<!--    <div class="length br-len-box">-->
-<!--        <p class="label">UNTIL LONG BREAK</p>-->
-<!--        <button id="long-cnt-break-decr">&minus;</button>-->
-<!--        <span id="long-cnt-break-len" class="number">5</span>-->
-<!--        <button id="long-cnt-break-incr">+</button>-->
-<!--    </div>-->
-<!--    <div class="length l-br-len-box">-->
-<!--        <p class="label">DAILY GOAL</p>-->
-<!--        <button id="daily-decr">&minus;</button>-->
-<!--        <span id="daily-len" class="number">5</span>-->
-<!--        <button id="daily-incr">+</button>-->
-<!--    </div>-->
+    </nav>
+
     <audio id="ding" controls>
         <source src="src/audio/ding.mp3" type="audio/mpeg">
     </audio>
     <audio id="endDing" controls>
         <source src="src/audio/attention.mp3" type="audio/mpeg">
     </audio>
-    <!-- <div id="email">
-         <img th:src="@{/images/email.png}" alt="이메일 이미지">
-         <span id="sendEmail">devmango1128@gmail.com</span>
-     </div>-->
 </div>
 </body>
 <script src="src/lib/main.js"></script>

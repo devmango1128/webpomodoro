@@ -9,7 +9,7 @@ body {
 }
 
 #container {
-    margin: 10px auto;
+    margin: 0 auto;
     position: relative;
-    max-width:380px;
+    max-width: 380px;
 }
