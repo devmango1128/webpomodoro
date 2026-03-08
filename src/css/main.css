@@ -10,7 +10,9 @@
     justify-content: space-between;
     padding: 0 16px;
     z-index: 100;
-    background-color: rgba(0, 0, 0, 0.15);
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 #titlebar-left,
@@ -227,7 +229,9 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: rgba(0, 0, 0, 0.15);
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     z-index: 100;
 }
 
